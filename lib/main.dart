@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:webinar/app/pages/authentication_page/login_page.dart';
 import 'package:webinar/app/pages/introduction_page/intro_page.dart';
@@ -81,7 +80,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:auto_orientation/auto_orientation.dart';
-import 'package:flutter/services.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -102,8 +100,7 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
 
-  // implemented using window manager
-  await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+  // FLAG_SECURE is implemented natively in MainActivity.kt
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
@@ -165,14 +162,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  Future<void> secureScreen() async {
-    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
-  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    secureScreen();
+    // FLAG_SECURE is set natively in MainActivity.kt
   }
 
   @override
