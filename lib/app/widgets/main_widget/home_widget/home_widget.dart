@@ -27,7 +27,7 @@ import '../main_widget.dart';
 class HomeWidget{
 
   static Widget homeAppBar(AnimationController appBarController, Animation appBarAnimation,String token,TextEditingController searchController,FocusNode searchNode,String name){
-    bool isLandscape = false; // متغير لتتبع حالة الشاشة
+    // bool isLandscape = false; // متغير لتتبع حالة الشاشة - unused
     return AnimatedBuilder(
       animation: appBarAnimation,
       builder: (context, child) {

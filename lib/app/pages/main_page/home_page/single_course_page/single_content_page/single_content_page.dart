@@ -31,7 +31,6 @@ import '../../../../../../common/utils/date_formater.dart';
 import '../../../../../../config/assets.dart';
 import '../../../../../widgets/main_widget/home_widget/single_course_widget/course_video_player.dart';
 import '../../../../../widgets/main_widget/home_widget/single_course_widget/custom_video_player.dart';
-import '../../../../../widgets/main_widget/home_widget/single_course_widget/pod_video_player.dart';
 import '../../../../../widgets/main_widget/home_widget/single_course_widget/single_course_widget.dart';
 
 class SingleContentPage extends StatefulWidget {
@@ -836,3 +835,4 @@ class _SingleContentPageState extends State<SingleContentPage> {
     }
   }
 }
+

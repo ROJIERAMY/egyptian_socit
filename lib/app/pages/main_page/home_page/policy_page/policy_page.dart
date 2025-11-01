@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:webinar/common/components.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class TermsAndConditionsPage extends StatelessWidget {
   static const String pageName = '/terms-and-conditions';
@@ -164,3 +163,4 @@ class TermsAndConditionsPage extends StatelessWidget {
     );
   }
 }
+

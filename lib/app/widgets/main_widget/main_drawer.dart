@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:webinar/app/pages/authentication_page/login_page.dart';
 import 'package:webinar/app/pages/main_page/home_page/certificates_page/certificates_page.dart';
 import 'package:webinar/app/pages/main_page/home_page/assignments_page/assignments_page.dart';
@@ -30,7 +28,6 @@ import 'package:webinar/locator.dart';
 import '../../../common/utils/object_instance.dart';
 import '../../pages/main_page/home_page/comments_page/comments_page.dart';
 import '../../pages/main_page/home_page/dashboard_page/dashboard_page.dart';
-import '../../pages/main_page/home_page/download_page/downloads_page.dart';
 import '../../pages/main_page/home_page/favorites_page/favorites_page.dart';
 import '../../pages/main_page/home_page/policy_page/policy_page.dart';
 import '../../pages/main_page/home_page/quizzes_page/quizzes_page.dart';

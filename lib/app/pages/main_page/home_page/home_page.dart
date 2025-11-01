@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:webinar/app/pages/main_page/categories_page/categories_page.dart';
 import 'package:webinar/app/pages/main_page/categories_page/filter_category_page/filter_category_page.dart';
 import 'package:webinar/app/providers/drawer_provider.dart';
 import 'package:webinar/app/services/guest_service/course_service.dart';
@@ -823,4 +822,5 @@ class HorizontalCategoriesWidget extends StatelessWidget {
     );
   }
 }
+
 

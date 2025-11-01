@@ -17,7 +17,6 @@ import 'package:webinar/locator.dart';
 import '../../../../common/utils/object_instance.dart';
 import '../../../models/category_model.dart';
 import '../../../../common/components.dart';
-import '../home_page/search_page/suggested_search_page.dart';
 
 class CategoriesPage extends StatefulWidget {
   static const String pageName = '/CategoriesPage';

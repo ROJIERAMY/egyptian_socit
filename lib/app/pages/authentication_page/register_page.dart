@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:webinar/app/models/register_config_model.dart';
 import 'package:webinar/app/pages/authentication_page/login_page.dart';
 import 'package:webinar/app/pages/authentication_page/verify_code_page.dart';
@@ -12,7 +10,6 @@ import 'package:webinar/app/services/guest_service/guest_service.dart';
 import 'package:webinar/app/widgets/authentication_widget/auth_widget.dart';
 import 'package:webinar/app/widgets/authentication_widget/country_code_widget/code_country.dart';
 import 'package:webinar/app/widgets/authentication_widget/register_widget/register_widget.dart';
-import 'package:webinar/app/widgets/main_widget/main_widget.dart';
 import 'package:webinar/common/common.dart';
 import 'package:webinar/common/data/api_public_data.dart';
 import 'package:webinar/common/enums/error_enum.dart';
@@ -721,3 +718,4 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
+

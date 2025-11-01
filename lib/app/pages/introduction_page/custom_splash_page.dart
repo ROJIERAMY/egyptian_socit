@@ -3,16 +3,13 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:webinar/app/pages/introduction_page/intro_page.dart';
 import 'package:webinar/app/pages/main_page/main_page.dart';
 import 'package:webinar/app/pages/offline_page/internet_connection_page.dart';
 import 'package:webinar/app/services/guest_service/guest_service.dart';
 import 'package:webinar/common/common.dart';
 import 'package:webinar/common/data/app_data.dart';
-import 'package:webinar/common/utils/app_text.dart';
 import 'package:webinar/config/assets.dart';
-import 'package:webinar/config/styles.dart';
 
 import '../../../config/colors.dart';
 
@@ -246,3 +243,4 @@ class _SplashPageState extends State<SplashPage>
     super.dispose();
   }
 }
+
