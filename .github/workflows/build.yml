@@ -64,6 +64,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: release-apk
-        path: build/app/outputs/flutter-apk/app-release.apk
+        path: ${{ steps.project_root.outputs.root }}/build/app/outputs/flutter-apk/app-release.apk
         retention-days: 30
 
