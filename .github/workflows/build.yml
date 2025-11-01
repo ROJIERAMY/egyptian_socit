@@ -11,6 +11,26 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Find project root
+      id: project_root
+      run: |
+        if [ -f "pubspec.yaml" ]; then
+          echo "root=." >> $GITHUB_OUTPUT
+        elif [ -f "Anmka-Egyptian-society-of-oral-implantology-main/pubspec.yaml" ]; then
+          echo "root=Anmka-Egyptian-society-of-oral-implantology-main" >> $GITHUB_OUTPUT
+        else
+          PROJECT_ROOT=$(find . -name "pubspec.yaml" -type f | head -1 | xargs dirname)
+          echo "root=$PROJECT_ROOT" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Display project structure
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Looking for pubspec.yaml..."
+        find . -name "pubspec.yaml" -type f | head -5
     
     - name: Setup Java
       uses: actions/setup-java@v4
@@ -28,11 +48,15 @@ jobs:
     - name: Verify Flutter installation
       run: flutter doctor -v
     
-    - name: Install dependencies
+    - name: Navigate to project root and install dependencies
+      working-directory: ${{ steps.project_root.outputs.root }}
       run: |
+        echo "Working in: $(pwd)"
+        ls -la | head -10
         flutter pub get
     
     - name: Build APK
+      working-directory: ${{ steps.project_root.outputs.root }}
       run: |
         flutter build apk --release
     
