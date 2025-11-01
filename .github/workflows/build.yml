@@ -43,7 +43,10 @@ jobs:
         cache: true
     
     - name: Verify Flutter installation
-      run: flutter doctor -v
+      run: |
+        flutter doctor -v
+        echo "FLUTTER_ROOT: $FLUTTER_ROOT"
+        echo "Flutter path: $(which flutter)"
     
     - name: Verify project structure
       run: |
