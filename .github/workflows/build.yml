@@ -11,26 +11,17 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
     
-    - name: Find project root
-      id: project_root
+    - name: List repository contents
       run: |
-        if [ -f "pubspec.yaml" ]; then
-          echo "root=." >> $GITHUB_OUTPUT
-        elif [ -f "Anmka-Egyptian-society-of-oral-implantology-main/pubspec.yaml" ]; then
-          echo "root=Anmka-Egyptian-society-of-oral-implantology-main" >> $GITHUB_OUTPUT
-        else
-          PROJECT_ROOT=$(find . -name "pubspec.yaml" -type f | head -1 | xargs dirname)
-          echo "root=$PROJECT_ROOT" >> $GITHUB_OUTPUT
-        fi
-    
-    - name: Display project structure
-      run: |
-        echo "Current directory: $(pwd)"
-        echo "Looking for pubspec.yaml..."
-        find . -name "pubspec.yaml" -type f | head -5
+        echo "Repository root contents:"
+        ls -la
+        echo ""
+        echo "Looking for pubspec.yaml:"
+        find . -maxdepth 2 -name "pubspec.yaml" -type f || echo "Not found in root or subdirectories"
+        echo ""
+        echo "Checking if we're in the right directory:"
+        pwd
     
     - name: Setup Java
       uses: actions/setup-java@v4
@@ -48,22 +39,28 @@ jobs:
     - name: Verify Flutter installation
       run: flutter doctor -v
     
-    - name: Navigate to project root and install dependencies
-      working-directory: ${{ steps.project_root.outputs.root }}
+    - name: Verify project structure
       run: |
-        echo "Working in: $(pwd)"
-        ls -la | head -10
-        flutter pub get
+        if [ ! -f "pubspec.yaml" ]; then
+          echo "ERROR: pubspec.yaml not found in current directory!"
+          echo "Current directory: $(pwd)"
+          echo "Contents:"
+          ls -la
+          exit 1
+        fi
+        echo "✓ Found pubspec.yaml in $(pwd)"
+        cat pubspec.yaml | head -5
+    
+    - name: Install dependencies
+      run: flutter pub get
     
     - name: Build APK
-      working-directory: ${{ steps.project_root.outputs.root }}
-      run: |
-        flutter build apk --release
+      run: flutter build apk --release
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: release-apk
-        path: ${{ steps.project_root.outputs.root }}/build/app/outputs/flutter-apk/app-release.apk
+        path: build/app/outputs/flutter-apk/app-release.apk
         retention-days: 30
 
