@@ -82,6 +82,7 @@ class _CourseVideoPlayerState extends State<CourseVideoPlayer> with RouteAware {
 
   @override
   void dispose() {
+    _timer.cancel();
     widget.routeObserver.unsubscribe(this);
     controller.dispose();
     super.dispose();
@@ -428,4 +429,3 @@ class _CourseVideoPlayerState extends State<CourseVideoPlayer> with RouteAware {
     );
   }
 }
-
