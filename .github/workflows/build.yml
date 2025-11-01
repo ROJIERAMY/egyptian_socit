@@ -29,6 +29,12 @@ jobs:
         distribution: 'zulu'
         java-version: '17'
     
+    - name: Verify Java setup
+      run: |
+        echo "JAVA_HOME: $JAVA_HOME"
+        java -version
+        echo "Java path: $(which java)"
+    
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
