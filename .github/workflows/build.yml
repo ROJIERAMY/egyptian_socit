@@ -74,6 +74,9 @@ jobs:
     - name: Analyze code (check for errors)
       run: flutter analyze --no-fatal-infos || true
     
+    - name: Accept Android Licenses
+      run: flutter doctor --android-licenses || yes | sdkmanager --licenses || true
+    
     - name: Build APK
       run: flutter build apk --release
       continue-on-error: false
