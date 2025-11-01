@@ -47,6 +47,12 @@ jobs:
         flutter doctor -v
         echo "FLUTTER_ROOT: $FLUTTER_ROOT"
         echo "Flutter path: $(which flutter)"
+        # Ensure FLUTTER_ROOT is set for Gradle
+        if [ -z "$FLUTTER_ROOT" ]; then
+          export FLUTTER_ROOT=$(flutter --version | head -n 1 | awk '{print $NF}' | xargs dirname | xargs dirname)
+          echo "Setting FLUTTER_ROOT to: $FLUTTER_ROOT"
+        fi
+        echo "FLUTTER_ROOT=$FLUTTER_ROOT" >> $GITHUB_ENV
     
     - name: Verify project structure
       run: |
