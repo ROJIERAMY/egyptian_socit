@@ -53,7 +53,7 @@ class _CourseVideoPlayerState extends State<CourseVideoPlayer> with RouteAware {
   // متغيرات لتحديد مكان النص
   double _watermarkPositionX = 0.0;
   double _watermarkPositionY = 0.0;
-  late Timer _timer;?
+  late Timer _timer;
 
   @override
   void initState() {
